@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name:       Feature Grid Victor
- * Description:       Example block scaffolded with Create Block tool.
+ * Plugin Name:       Feature Grid Victor Block
+ * Description:       Blocks to display grid of features cards.
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           0.1.0
- * Author:            The WordPress Contributors
+ * Author:            Rob Ruiz
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       feature-grid-victor
