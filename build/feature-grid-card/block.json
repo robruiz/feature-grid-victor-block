@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "feature-grid-victor/feature-grid-card",
+  "parent": [
+    "feature-grid-victor/feature-grid-nav"
+  ],
+  "version": "0.1.0",
+  "title": "Feature Grid Card",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "Example block scaffolded with Create Block tool.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "label": {
+      "type": "string",
+      "default": "placeholder"
+    },
+    "title": {
+      "type": "string",
+      "default": "placeholder"
+    },
+    "description": {
+      "type": "string",
+      "default": "placeholder"
+    },
+    "mediaId": {
+      "type": "number",
+      "default": 0
+    },
+    "mediaUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "link": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "textdomain": "feature-grid-victor",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

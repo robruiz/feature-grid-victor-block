@@ -1,0 +1,44 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/feature-grid-card/style.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-feature-grid-victor-feature-grid-card {
+  display: block;
+  position: relative;
+  width: 280px;
+  height: 300px;
+  background-color: #4a4a4a;
+  color: #fff;
+  padding: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.wp-block-feature-grid-victor-feature-grid-card div.card-bottom {
+  position: absolute;
+  bottom: 0;
+  margin: 0 auto;
+  left: 0;
+  width: 100%;
+  text-align: left;
+  padding: 2em;
+}
+.wp-block-feature-grid-victor-feature-grid-card div.card-bottom strong.card-title {
+  font-size: 1.7em;
+}
+
+div.card-label {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.8196078431);
+  border-radius: 3px;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
