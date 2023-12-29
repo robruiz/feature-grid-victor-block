@@ -135,7 +135,7 @@ export default function Edit( props ) {
 			<InspectorControls>
 				<Panel>
 					<PanelBody
-						title={__('Select block background image', 'feature-grid-victor')}
+						title={__('Card Background Image', 'feature-grid-victor')}
 						initialOpen={true}
 					>
 						<div className="editor-post-featured-image">
@@ -146,7 +146,6 @@ export default function Edit( props ) {
 										value={attributes.mediaId}
 										allowedTypes={['image']}
 										render={({open}) => (
-											<PanelRow>
 												<Button
 													className={attributes.mediaId === 0 ? 'editor-post-featured-image__toggle' : 'editor-post-featured-image__preview'}
 													onClick={open}
@@ -157,11 +156,10 @@ export default function Edit( props ) {
 															naturalWidth={props.media.media_details.width}
 															naturalHeight={props.media.media_details.height}
 														>
-															<img src={props.media.source_url}/>
+											s				<img src={props.media.source_url}/>
 														</ResponsiveWrapper>
 													}
 												</Button>
-											</PanelRow>
 										)}
 									/>
 								</PanelRow>
