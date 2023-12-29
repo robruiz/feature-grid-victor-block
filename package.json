@@ -11,10 +11,14 @@
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts plugin-zip",
+		"plugin-zip": "wp-scripmts plugin-zip",
 		"start": "wp-scripts start"
 	},
 	"devDependencies": {
+		"@wordpress/icons": "^9.39.0",
 		"@wordpress/scripts": "^26.19.0"
+	},
+	"dependencies": {
+		"@wordpress/compose": "^6.25.0"
 	}
 }

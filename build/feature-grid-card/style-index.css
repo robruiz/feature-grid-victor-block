@@ -31,6 +31,23 @@
 .wp-block-feature-grid-victor-feature-grid-card div.card-bottom strong.card-title {
   font-size: 1.7em;
 }
+.wp-block-feature-grid-victor-feature-grid-card img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0;
+  transform: scale(0.7);
+  filter: opacity(0.25);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.wp-block-feature-grid-victor-feature-grid-card:hover img, .wp-block-feature-grid-victor-feature-grid-card:focus img {
+  opacity: 1;
+  transform: scale(1);
+}
 
 div.card-label {
   position: absolute;

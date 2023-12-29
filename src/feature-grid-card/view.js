@@ -20,6 +20,15 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
 
-/* eslint-disable no-console */
-console.log( 'Hello World! (from create-block-feature-grid-victor block)' );
-/* eslint-enable no-console */
+// eslint-disable-next-line no-console
+const navButtons = document.querySelectorAll('button.wp-block-feature-grid-victor-feature-grid-card');
+
+navButtons.forEach((button) => {
+    if (button.hasAttribute('data-link')) {
+        button.addEventListener('click', (e) => {
+            window.location.href = button.getAttribute('data-link');
+        });
+    }
+});
+
+console.log(navButtons);

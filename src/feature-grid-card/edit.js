@@ -5,6 +5,8 @@
  */
 import { __ } from '@wordpress/i18n';
 
+import { getUpdatedLinkAttributes } from './get-updated-link-attributes';
+
 /**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
@@ -16,10 +18,32 @@ import {
 	RichText,
 	InspectorControls,
 	MediaUpload,
-	MediaUploadCheck
+	MediaUploadCheck,
+	BlockControls,
+	__experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
 
-import { Panel, PanelBody, Button, ResponsiveWrapper } from '@wordpress/components';
+import {
+	Panel,
+	PanelBody,
+	Button,
+	ResponsiveWrapper,
+	ToolbarButton,
+	Popover
+} from '@wordpress/components';
+
+import {
+	useEffect,
+	useState,
+	useRef,
+	useMemo
+} from '@wordpress/element';
+
+import { displayShortcut, isKeyboardEvent, ENTER } from '@wordpress/keycodes';
+
+import { useMergeRefs, useRefEffect } from '@wordpress/compose';
+
+import { link , linkOff } from '../../node_modules/@wordpress/icons';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -38,7 +62,7 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit( props ) {
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, isSelected } = props;
 
 	const removeMedia = () => {
 		props.setAttributes({
@@ -54,10 +78,57 @@ export default function Edit( props ) {
 		});
 	}
 
+	const [ isEditingURL, setIsEditingURL ] = useState( false );
+	const [ popoverAnchor, setPopoverAnchor ] = useState( null );
+
+	function startEditing( event ) {
+		event.preventDefault();
+		setIsEditingURL( true );
+	}
+
+	function unlink() {
+		setAttributes( {
+			link: undefined
+		} );
+		setIsEditingURL( false );
+	}
+
+	const isURLSet = !! attributes.link;
+	const isLinkTag = 'a';
+	const linkURL = attributes.link;
+	const opensInNewTab = false;
+	const nofollow = 'nofollow';
+	const richTextRef = useRef();
+	/*const blockProps = useBlockProps( {
+		ref: useMergeRefs( [ setPopoverAnchor ] ),
+		onKeyDown,
+	} );*/
+
+	const LINK_SETTINGS = [
+		...LinkControl.DEFAULT_LINK_SETTINGS,
+		{
+			id: 'nofollow',
+			title: __( 'Mark as nofollow' ),
+		},
+	];
+
+	useEffect( () => {
+		if ( ! isSelected ) {
+			setIsEditingURL( false );
+		}
+	}, [ isSelected ] );
+
+	const linkValue = useMemo(
+		() => ( { linkURL, opensInNewTab, nofollow } ),
+		[ linkURL , false, null ]
+	);
+
 	const blockStyle = {
 		backgroundImage: attributes.mediaUrl !== '' ? 'url("' + attributes.mediaUrl + '")' : 'none'
 	};
-	console.log(props);
+	console.log([props, linkValue]);
+	/*const useEnterRef = useEnter( { content: text, clientId } );
+	const mergedRef = useMergeRefs( [ useEnterRef, richTextRef ] );*/
     return (
 		<button {...useBlockProps()}>
 			<InspectorControls>
@@ -115,6 +186,57 @@ export default function Edit( props ) {
 					</PanelBody>
 				</Panel>
 			</InspectorControls>
+			<BlockControls group="block">
+					{ ! isURLSet && isLinkTag && (
+						<ToolbarButton
+							name="link"
+							icon={ link }
+							title={ __( 'Link' ) }
+							shortcut={ displayShortcut.primary( 'k' ) }
+							onClick={ startEditing }
+						/>
+					) }
+					{ isURLSet && isLinkTag && (
+						<ToolbarButton
+							name="link"
+							icon={ linkOff }
+							title={ __( 'Unlink' ) }
+							shortcut={ displayShortcut.primaryShift( 'k' ) }
+							onClick={ unlink }
+							isActive={ true }
+						/>
+					) }
+			</BlockControls>
+			{ isLinkTag && isSelected && ( isEditingURL || isURLSet ) && (
+				<Popover
+					placement="bottom"
+					onClose={ () => {
+						setIsEditingURL( false );
+						richTextRef.current?.focus();
+					} }
+					anchor={ popoverAnchor }
+					focusOnMount={ isEditingURL ? 'firstElement' : false }
+					__unstableSlotName={ '__unstable-block-tools-after' }
+					shift
+				>
+					<LinkControl
+						value={ linkValue }
+						onChange={ ( data ) => {
+							console.log(data);
+							setAttributes({
+								link: data.url
+							})
+						}
+						}
+						onRemove={ () => {
+							unlink();
+							richTextRef.current?.focus();
+						} }
+						forceIsEditingLink={ isEditingURL }
+						settings={ LINK_SETTINGS }
+					/>
+				</Popover>
+			) }
 			<RichText
 				tagName="div" // The tag here is the element output and editable in the admin
 				value={attributes.label} // Any existing content, either from the database or an attribute default

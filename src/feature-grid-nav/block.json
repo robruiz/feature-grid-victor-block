@@ -9,7 +9,8 @@
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"align": true
 	},
 	"textdomain": "feature-grid-victor",
 	"editorScript": "file:./index.js",

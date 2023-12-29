@@ -12,7 +12,9 @@
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "anchor": true,
+    "ariaLabel": true
   },
   "attributes": {
     "label": {
@@ -36,8 +38,11 @@
       "default": ""
     },
     "link": {
+      "selector": "button",
+      "source": "attribute",
       "type": "string",
-      "default": ""
+      "default": "",
+      "attribute": "data-link"
     }
   },
   "textdomain": "feature-grid-victor",
