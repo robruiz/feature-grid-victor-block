@@ -26,6 +26,7 @@ import {
 import {
 	Panel,
 	PanelBody,
+	PanelRow,
 	Button,
 	ResponsiveWrapper,
 	ToolbarButton,
@@ -139,40 +140,49 @@ export default function Edit( props ) {
 					>
 						<div className="editor-post-featured-image">
 							<MediaUploadCheck>
-								<MediaUpload
-									onSelect={onSelectMedia}
-									value={attributes.mediaId}
-									allowedTypes={['image']}
-									render={({open}) => (
-										<Button
-											className={attributes.mediaId === 0 ? 'editor-post-featured-image__toggle' : 'editor-post-featured-image__preview'}
-											onClick={open}
-										>
-											{attributes.mediaId === 0 && __('Choose an image', 'feature-grid-victor')}
-											{props.media !== undefined &&
-												<ResponsiveWrapper
-													naturalWidth={props.media.media_details.width}
-													naturalHeight={props.media.media_details.height}
+								<PanelRow>
+									<MediaUpload
+										onSelect={onSelectMedia}
+										value={attributes.mediaId}
+										allowedTypes={['image']}
+										render={({open}) => (
+											<PanelRow>
+												<Button
+													className={attributes.mediaId === 0 ? 'editor-post-featured-image__toggle' : 'editor-post-featured-image__preview'}
+													onClick={open}
 												>
-													<img src={props.media.source_url}/>
-												</ResponsiveWrapper>
-											}
-										</Button>
-									)}
-								/>
+													{attributes.mediaId === 0 && __('Choose an image', 'feature-grid-victor')}
+													{props.media !== undefined &&
+														<ResponsiveWrapper
+															naturalWidth={props.media.media_details.width}
+															naturalHeight={props.media.media_details.height}
+														>
+															<img src={props.media.source_url}/>
+														</ResponsiveWrapper>
+													}
+												</Button>
+											</PanelRow>
+										)}
+									/>
+								</PanelRow>
 							</MediaUploadCheck>
 							{attributes.mediaId !== 0 &&
 								<MediaUploadCheck>
+									<PanelRow>
 									<MediaUpload
 										title={__('Replace image', 'feature-grid-victor')}
 										value={attributes.mediaId}
 										onSelect={onSelectMedia}
 										allowedTypes={['image']}
 										render={({open}) => (
-											<Button onClick={open} isDefault
-													isLarge>{__('Replace image', 'feature-grid-victor')}</Button>
+											<PanelRow>
+												<Button onClick={open} isDefault
+														isLarge>{__('Replace image', 'feature-grid-victor')}
+												</Button>
+											</PanelRow>
 										)}
 									/>
+									</PanelRow>
 								</MediaUploadCheck>
 							}
 							{attributes.mediaId !== 0 &&
