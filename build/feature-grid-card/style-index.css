@@ -21,15 +21,19 @@
 }
 .wp-block-feature-grid-victor-feature-grid-card div.card-bottom {
   position: absolute;
+  width: 100%;
   bottom: 0;
   margin: 0 auto;
   left: 0;
-  width: 100%;
   text-align: left;
-  padding: 2em;
 }
-.wp-block-feature-grid-victor-feature-grid-card div.card-bottom strong.card-title {
-  font-size: 1.7em;
+.wp-block-feature-grid-victor-feature-grid-card .card-title, .wp-block-feature-grid-victor-feature-grid-card .card-description {
+  display: block;
+  width: 80%;
+  margin: 10% auto;
+}
+.wp-block-feature-grid-victor-feature-grid-card strong.card-title {
+  font-size: 1.4em;
 }
 .wp-block-feature-grid-victor-feature-grid-card img {
   width: 100%;
