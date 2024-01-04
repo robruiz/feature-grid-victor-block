@@ -5,8 +5,8 @@
   "version": "0.1.0",
   "title": "Feature Grid Nav",
   "category": "widgets",
-  "icon": "smiley",
-  "description": "Example block scaffolded with Create Block tool.",
+  "icon": "grid-view",
+  "description": "A grid of card blocks that act as a nav/menu of buttons",
   "example": {},
   "supports": {
     "html": false,

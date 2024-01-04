@@ -29,3 +29,15 @@ function feature_grid_victor_feature_grid_victor_block_init() {
 	register_block_type( __DIR__ . '/build/feature-grid-card' );
 }
 add_action( 'init', 'feature_grid_victor_feature_grid_victor_block_init' );
+
+function feature_grid_victor_register_block_pattern() {
+	register_block_pattern(
+		'feature-grid-victor/feature-section',
+		array(
+			'title'       => __( 'Victor Feature Section', 'feature-grid-victor' ),
+			'content'     => file_get_contents( plugin_dir_path( __FILE__ ) . 'patterns/feature-section.html' ),
+			'keywords'    => array( 'feature', 'grid', 'victor' ),
+		)
+	);
+}
+add_action( 'init', 'feature_grid_victor_register_block_pattern' );

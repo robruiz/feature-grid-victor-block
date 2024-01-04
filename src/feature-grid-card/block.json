@@ -6,8 +6,8 @@
 	"version": "0.1.0",
 	"title": "Feature Grid Card",
 	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block scaffolded with Create Block tool.",
+	"icon": "grid-view",
+	"description": "A card to display product/service features",
 	"example": {},
 	"supports": {
 		"html": false,
