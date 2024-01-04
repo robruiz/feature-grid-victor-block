@@ -204,7 +204,7 @@ function Edit(props) {
   const blockStyle = {
     backgroundImage: attributes.mediaUrl !== '' ? 'url("' + attributes.mediaUrl + '")' : 'none'
   };
-  console.log([props, linkValue]);
+  /*console.log([props, linkValue]);*/
   /*const useEnterRef = useEnter( { content: text, clientId } );
   const mergedRef = useMergeRefs( [ useEnterRef, richTextRef ] );*/
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
