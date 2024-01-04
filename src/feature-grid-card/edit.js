@@ -127,7 +127,7 @@ export default function Edit( props ) {
 	const blockStyle = {
 		backgroundImage: attributes.mediaUrl !== '' ? 'url("' + attributes.mediaUrl + '")' : 'none'
 	};
-	console.log([props, linkValue]);
+	/*console.log([props, linkValue]);*/
 	/*const useEnterRef = useEnter( { content: text, clientId } );
 	const mergedRef = useMergeRefs( [ useEnterRef, richTextRef ] );*/
     return (
